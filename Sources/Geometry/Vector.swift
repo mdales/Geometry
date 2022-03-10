@@ -38,7 +38,11 @@ public extension VectorType {
         }
         return true
     }
-    
+
+    func hash(into hasher: inout Hasher) {
+        Self.components.forEach { hasher.combine($0) }
+    }
+
     var hashValue: Int {
         return Self.components.description.hashValue // FIXME: This hash algorithm is inefficient.
     }
